@@ -10,7 +10,7 @@ Tyner JW, Tognon CE, Bottomly D, Wilmot B, Kurtz SE, Savage SL, Long N, Schultz 
 &nbsp;&nbsp;&nbsp;&nbsp;2.2. [Building and using a Docker image](#2.2)<br>
 
 ### <a name="1">1. Description of notebooks</a>
-The collection contains 3 Jupyter notebooks, two written in R and one in Python. The purpose of each Jupyter notebook is described in the table below. The table provides a shor summary. The logic of designed analyses is described in details in the notebooks.
+The collection contains 4 Jupyter notebooks, two written in R and one in Python. The purpose of each Jupyter notebook is described in the table below. The table provides a shor summary. The logic of designed analyses is described in details in the notebooks.
 
 | No. | File name | Language | Purpose |
 | - | - | - | - |
