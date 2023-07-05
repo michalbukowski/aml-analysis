@@ -59,19 +59,19 @@ Jupyter Lab launched in this way will automatically open an internet browser win
 To create a Docker image based on Ubuntu 22.04 with Miniconda installation, run the following command in the main directory of this workflow where the `Dockerfile` is present. In this step you will create an image based on `continuumio/miniconda3` from the Docker library, create a conda environment in it by using _conda/aml-env.yml_ file, and install necessary _libtiff5_ and _libxt6_ libraries. A user `amluser` (`uid=1000`) and a group `amlgroup` (`gid=1000`) are created by default. You may want to change `uid` and `gid` to those of your user by `--build-arg` argument:
 
 ```Bash
-docker build -t --build-arg uid=$(id -u) --build-arg gid=$(id -g) aml-app ./
+docker build -t --build-arg uid=$(id -u) --build-arg gid=$(id -g) aml-app:1.0 ./
 ```
 
 Then create and run a container, use the following command whilst still being in the main workflow directory:
 
 ```Bash
-docker run --rm -it -p 8888:8888 -v ./:/app aml-app
+docker run --rm -it -p 8888:8888 -v ./:/app aml-app:1.0
 ```
 
 In case you wish to run the container as root, simply add the argument `--user 0:0` to the command:
 
 ```Bash
-docker run --user 0:0 --rm -it -p 8888:8888 -v ./:/app aml-app
+docker run --user 0:0 --rm -it -p 8888:8888 -v ./:/app aml-app:1.0
 ```
 
 It will run a container in the interactive mode (`-it`). The container will be instantenously removed once it is no longer used (`-rm`). The 8888 port inside the container will be mapped to 8888 port in your system (`-p 8888:8888`). You may choose another external port, that is the port in your OS, e.g. 8889 or higher by changing the first number. The port 8888 will be used inside the container by Jypyter Lab server. Finally the current location (the main workflow directory) will be mapped to `/app` location inside the container. That will let you run the notebooks present in the main workflow directory from inside the container.
