@@ -15,7 +15,7 @@ The collection contains 4 Jupyter notebooks, two written in R and two in Python.
 | No. | File name | Language | Purpose |
 | - | - | - | - |
 | 1. | `function_r.ipynb` | R | An implementation of a function that for Ensembl IDs (genes/transcripts/proteins/exons) returns gene names according to HUGO Gene Nomenclature Committee (HGNC names). The function is not utilised in this workflow, however it may be of use when reporting DGE results obtained in the notebook No. 2. |
-| 2. | `function_py.ipynb` | Python | A Python version of the function implemented in 1. For comprison and testing purposes. |
+| 2. | `function_py.ipynb` | Python | A Python version of the function implemented in 1. For comparison and testing purposes. |
 | 3. | `dge.ipynb` | R | Differential gene expression (DGE) analysis for data from the "BeatAML" study. The analysis is undertaken for samples divided into two groups, that is samples from patients with or without NPM1 gene mutation. The analysis utilises DESeq2 library. |
 | 4. | `analysis.ipnb` | Python | A simple and based on GO annotations functional analysis of genes differently expressed among samples analysed in the notebook No. 2. |
 
@@ -33,7 +33,7 @@ The notebooks were tested on linux-64 platform (Ubuntu 22.04) using Miniconda (c
 - cairo 1.16.0
 - libxml2 2.11.4
 
-On the top of those, _libtiff5_ and _libxt6_ must be installed in the operating system. Both libraries should be present in a standard Ubuntu installation
+On the top of those, _libtiff5_ and _libxt6_ must be installed in the operating system. Both libraries should be present in a standard Ubuntu installation.
 
 ### <a name="2.1">2.1. Manual environment setup</a>
 To recreate the conda environment use `conda/aml-env.yml` file:
@@ -62,7 +62,7 @@ To create a Docker image based on Ubuntu 22.04 with Miniconda installation, run 
 docker build -t --build-arg uid=$(id -u) --build-arg gid=$(id -g) aml-app ./
 ```
 
-Then create and run a container using the following command whilst still being in the main workflow directory:
+Then create and run a container, use the following command whilst still being in the main workflow directory:
 
 ```Bash
 docker run --rm -it -p 8888:8888 -v ./:/app aml-app
@@ -74,7 +74,7 @@ In case you wish to run the container as root, simply add the argument `--user 0
 docker run --user 0:0 --rm -it -p 8888:8888 -v ./:/app aml-app
 ```
 
-It will run a container in the interactive mode (`-it`). The container will be instantenously removed once it is no longer used (`-rm`). The 8888 port inside the container will be mapped to 8888 port in your system (`-p 8888:8888`). You may choose another port for your system, e.g. 8889 or higher by changig the first number. The port 8888 will be used inside the container by Jypyter Lab server. Finally the current location (the main workflow directory) will be mapped to `/app` location inside the container. That will let you run the notebooks present in the main directory from inside the container.
+It will run a container in the interactive mode (`-it`). The container will be instantenously removed once it is no longer used (`-rm`). The 8888 port inside the container will be mapped to 8888 port in your system (`-p 8888:8888`). You may choose another external port, that is the port in your OS, e.g. 8889 or higher by changing the first number. The port 8888 will be used inside the container by Jypyter Lab server. Finally the current location (the main workflow directory) will be mapped to `/app` location inside the container. That will let you run the notebooks present in the main workflow directory from inside the container.
 
 The container will automatically run Jupyter Lab application on port 8888. You need to simply copy the address returned by Jupyter that, except the token value, will look like this:
 
